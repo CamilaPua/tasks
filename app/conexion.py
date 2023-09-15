@@ -36,7 +36,7 @@ if __name__ == '__main__':
     tareas = [
         'Llenar la jarra',
         'Hacer deploy',
-        'Organizar el cuarto'
+        'Organizar el cuarto',
         'barrer el cuarto',
         'Estudiar algoritmos 2',
         'Lavar ropa',
