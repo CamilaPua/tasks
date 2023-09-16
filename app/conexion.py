@@ -1,10 +1,14 @@
 # trae variables de entorno
 import os
+from dotenv import load_dotenv
+load_dotenv()
+RUTA_DB = os.environ.get("RUTA_DB")
+
 from pyodbc import connect
 
 class BaseDeDatos:
     def __init__(self) -> None:
-        self.conexion = connect(r"Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=C:\Users\cuc\buenas_practicas2\tasks;")
+        self.conexion = connect(r"Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ="+RUTA_DB+";")
         self.cursor = self.conexion.cursor()
 
     def insertar_tarea(self, tarea):
@@ -33,14 +37,15 @@ if __name__ == '__main__':
     db = BaseDeDatos()
 
     # se llena la base de datos
-    tareas = [
-        'Llenar la jarra',
-        'Hacer deploy',
-        'Organizar el cuarto',
-        'barrer el cuarto',
-        'Estudiar algoritmos 2',
-        'Lavar ropa',
-        'Revisar material de SED'
-    ]
-    for tarea in tareas:
-        db.insertar_tarea(tarea)
+    # tareas = [
+    #     'Llenar la jarra',
+    #     'Hacer deploy',
+    #     'Organizar el cuarto',
+    #     'barrer el cuarto',
+    #     'Estudiar algoritmos 2',
+    #     'Lavar ropa',
+    #     'Revisar material de SED'
+    # ]
+    # for tarea in tareas:
+    #     db.insertar_tarea(tarea)
+    db.leer_tareas()
