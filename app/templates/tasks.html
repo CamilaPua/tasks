@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }}
+    Mis tareas
+{% endblock %}
+
+{% block content %}
+    <h1>Mis tareas</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Tarea</th>
+            <th>Estado</th>
+        </tr>
+        {% for tarea in tareas %}
+            <tr>
+                {% for data in tarea %}
+                    {% if data == False %}
+                        <td>Por hacer</td>
+                    {% elif data == True %}
+                        <td>Hecho</td>
+                    {% else %}
+                        <td>{{ data }}</td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

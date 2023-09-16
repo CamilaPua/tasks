@@ -35,17 +35,4 @@ class BaseDeDatos:
 if __name__ == '__main__':
     # se instancia la base de datos para poder usarla en el proyecto
     db = BaseDeDatos()
-
-    # se llena la base de datos
-    # tareas = [
-    #     'Llenar la jarra',
-    #     'Hacer deploy',
-    #     'Organizar el cuarto',
-    #     'barrer el cuarto',
-    #     'Estudiar algoritmos 2',
-    #     'Lavar ropa',
-    #     'Revisar material de SED'
-    # ]
-    # for tarea in tareas:
-    #     db.insertar_tarea(tarea)
     db.leer_tareas()

@@ -18,4 +18,4 @@ python app/main.py
 ## Observaciones
 - Se ha cargado la base de datos, usa el motor de Access
 
-- En el archivo conexion.py se usan variables de entorno, ignore de la linea 1 a la 5 y reemplaze en la linea 11 RUTA_DB por su ruta a la base de datos
+- En el archivo app/conexion.py se usan variables de entorno, ignore de la linea 1 a la 5 y reemplaze en la linea 11 RUTA_DB por su ruta a la base de datos
