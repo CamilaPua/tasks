@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %} - Tasks{% endblock %}
+    </title>
+    <style>
+        /* Estilo para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        /* Estilo para las celdas de datos (td) */
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+    
+        /* Estilo para las celdas de encabezado (th) */
+        th {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+            background-color: #333; /* Fondo oscuro */
+            color: #fff; /* Texto blanco */
+            font-weight: bold; /* Texto en negrita */
+        }
+    </style>
+    
+    
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

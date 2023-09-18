@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+    Agregar tarea
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+    <h1>Agregar tarea</h1>
+    <form method="POST">
+        {{ macros.render_field(tareas_form.descripcion) }}
+        {{ macros.render_field_without_label(tareas_form.submit) }}
+    </form>
+{% endblock %}
