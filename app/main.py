@@ -24,5 +24,13 @@ def agregar_tarea():
     return render_template('agregar_tarea.html', tareas_form=tareas_form)
 
 
+@app.route('/modificar/', methods=['GET', 'POST'])
+def modificar_tarea():
+    tareas_form = forms.Tarea(request.form)
+    if request.method == 'POST':
+        pass
+    return render_template('modificar_tarea.html', tareas_form=tareas_form)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
