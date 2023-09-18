@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% import 'macros.html' as macros %}
 
 {% block title %}
-    {{ super() }}
     Mis tareas
+    {{ super() }}
 {% endblock %}
 
 {% block content %}
@@ -13,18 +14,23 @@
             <th>Tarea</th>
             <th>Estado</th>
         </tr>
-        {% for tarea in tareas %}
+        {% for tarea in lista_dics_tareas %}
             <tr>
-                {% for data in tarea %}
-                    {% if data == False %}
-                        <td>Por hacer</td>
-                    {% elif data == True %}
-                        <td>Hecho</td>
-                    {% else %}
-                        <td>{{ data }}</td>
-                    {% endif %}
-                {% endfor %}
+                <form method="POST", name="estado_form">
+                    <td>{{ tarea['id'] }}</td>
+                    <td>{{ tarea['descripcion'] }}</td>
+                    <td>
+                        {% if tarea['estado'] %}
+                            ✅ Hecho
+                        {% else %}
+                            〰 Por hacer
+                        {% endif %}
+                    </td>
+                </form>
             </tr>
         {% endfor %}
     </table>
+    <h3>
+        <a href="{{ url_for('agregar_tarea') }}">Agregar Tarea</a>
+    </h3>
 {% endblock %}

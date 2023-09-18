@@ -17,19 +17,27 @@ class BaseDeDatos:
         self.cursor.execute(query, (tarea))
         self.conexion.commit()
 
-    def completar_tarea(self, id_tarea):
-        query = " UPDATE tareas SET Estado = Si WHERE Id = ?;"
-        self.cursor.execute(query, id_tarea)
+    def cambiar_estado_tarea(self, id, estado):
+        query = " UPDATE tareas SET Estado = ? WHERE Id = ?;"
+        self.cursor.execute(query, estado, id)
         self.conexion.commit()
     
     def eliminar_tarea(self, id_tarea):
-        query = "DELETE FROM Empleados WHERE ID = ?"
+        query = "DELETE FROM tareas WHERE ID = ?"
         self.cursor.execute(query, id_tarea)
         self.conexion.commit()
 
     def leer_tareas(self):
         self.cursor.execute("SELECT * FROM tareas")
-        return self.cursor.fetchall()
+        tareas = self.cursor.fetchall()
+        lista_dicts_tareas = []
+        for tarea in tareas:
+            id, descripcion, estado = tarea
+            atributos = ['id', 'descripcion', 'estado']
+            valores = [id, descripcion, estado]
+            dict_tarea = dict(zip(atributos, valores))
+            lista_dicts_tareas.append(dict_tarea)
+        return lista_dicts_tareas
 
 
 if __name__ == '__main__':

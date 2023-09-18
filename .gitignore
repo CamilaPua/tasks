@@ -1,5 +1,6 @@
 env
 .env
+prueba
 *.laccdb
 __pycache__
 llenar_db.py
