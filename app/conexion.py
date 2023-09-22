@@ -11,18 +11,18 @@ class BaseDeDatos:
         self.conexion = connect(r"Driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ="+RUTA_DB+";")
         self.cursor = self.conexion.cursor()
 
-    def insertar_tarea(self, tarea):
+    def insertar_tarea(self, descripcion_tarea: str):
         query = "INSERT INTO tareas (Descripcion, Estado) \
         VALUES (?, No)"
-        self.cursor.execute(query, (tarea))
+        self.cursor.execute(query, (descripcion_tarea))
         self.conexion.commit()
 
-    def cambiar_estado_tarea(self, id, estado):
+    def cambiar_estado_tarea(self, id: int, estado: bool):
         query = " UPDATE tareas SET Estado = ? WHERE Id = ?;"
         self.cursor.execute(query, estado, id)
         self.conexion.commit()
     
-    def eliminar_tarea(self, id_tarea):
+    def eliminar_tarea(self, id_tarea: int):
         query = "DELETE FROM tareas WHERE ID = ?"
         self.cursor.execute(query, id_tarea)
         self.conexion.commit()
