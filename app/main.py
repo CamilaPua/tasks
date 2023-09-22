@@ -26,10 +26,20 @@ def agregar_tarea():
 
 @app.route('/modificar/', methods=['GET', 'POST'])
 def modificar_tarea():
+    lista_dics_tareas = db.leer_tareas()
     tareas_form = forms.Tarea(request.form)
     if request.method == 'POST':
-        pass
-    return render_template('modificar_tarea.html', tareas_form=tareas_form)
+        id_tarea = tareas_form.id.data
+        if id_tarea:
+            eliminar_tarea = tareas_form.eliminar.data
+            tarea_hecha, tarea_no_hecha = tareas_form.hecha.data, tareas_form.no_hecha.data
+            if eliminar_tarea:
+                db.eliminar_tarea(id_tarea)
+            elif tarea_hecha:
+                db.cambiar_estado_tarea(id_tarea, True)
+            elif tarea_no_hecha:
+                db.cambiar_estado_tarea(id_tarea, False)
+    return render_template('modificar_tarea.html', tareas_form=tareas_form, lista_dics_tareas=lista_dics_tareas)
 
 
 if __name__ == '__main__':
